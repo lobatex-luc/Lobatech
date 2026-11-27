@@ -15,16 +15,50 @@
 section{scroll-margin-top:24px}.section{padding:70px 0;border-top:1px solid var(--line)}.heading{font-size:clamp(2rem,5vw,4rem);line-height:1.02;letter-spacing:-.055em;margin:10px 0 24px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{padding:24px;border-radius:12px;background:var(--panel);border:1px solid var(--line)}.card h3{margin:0}.card p{margin-bottom:0}.card svg{color:var(--lime);margin-bottom:18px}.callout{padding:clamp(22px,5vw,48px);border-radius:18px;background:var(--lime);color:var(--ink)}.callout p{color:#373e26}.callout a{background:var(--ink);color:var(--text)}.contact{align-items:start}.contact form{display:grid;gap:14px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}label{display:grid;gap:6px;font-weight:650;font-size:.93rem}input,select,textarea{font:inherit;width:100%;min-width:0;border:1px solid #606978;border-radius:7px;padding:11px;background:#11141a;color:var(--text)}textarea{resize:vertical}form button{padding:12px 16px}form p{margin:0;font-size:.9rem}.result{display:grid;gap:10px;margin-top:18px}.result[hidden],[hidden]{display:none!important}details{border-bottom:1px solid var(--line);padding:14px 0}summary{font-weight:750;cursor:pointer}footer{padding:26px 0 38px;border-top:1px solid var(--line);color:var(--muted);display:flex;justify-content:space-between;gap:16px}.fade{animation:appear .4s ease-out}@keyframes appear{from{opacity:.62;transform:translateY(4px)}}
 @media(max-width:780px){.hero-grid,.split{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column;gap:10px}.cards{grid-template-columns:1fr}.hero{padding-top:55px}.section{padding:48px 0}}@media(max-width:380px){.fields{grid-template-columns:1fr}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important}}
 .title{font-size:clamp(2.65rem,5.2vw,5rem);line-height:1;letter-spacing:-.06em}.hero{padding:clamp(28px,5vw,70px) 0}.project{margin:0;min-width:0;display:grid;grid-template-columns:minmax(110px,1fr) 1fr;align-items:center;gap:clamp(14px,2vw,30px);padding:clamp(14px,2vw,30px);background:var(--panel);border:1px solid var(--line);border-radius:18px}.preview img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line)}.project h2{margin:.5rem 0 0;font-size:clamp(1.35rem,2.6vw,2.5rem);line-height:1.05}.project p{margin:.6em 0}.project figcaption a{color:var(--lime);text-underline-offset:3px}.card p+.button{margin-top:16px}.callout .heading{margin-top:0}.callout p{max-width:70ch}.callout p:last-child{margin-bottom:0}
+
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.portfolio-item{display:block;overflow:hidden;border:1px solid var(--line);background:var(--panel);border-radius:14px;text-decoration:none}
+.portfolio-item:is(:hover,:focus-visible){border-color:var(--lime)}
+.portfolio-image{overflow:hidden;background:var(--panel);aspect-ratio:960/650}
+.portfolio-image img{display:block;width:100%;height:100%;object-fit:cover}
+.portfolio-info{padding:18px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.portfolio-info h3,.portfolio-info p{margin:0}.portfolio-info p{font-size:.9rem}.portfolio-info span{color:var(--lime);font-size:1.4rem}
+@media(max-width:780px){.portfolio-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:no-preference){
+  @keyframes enter-section{from{opacity:.35;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  .hero-grid>div:first-child,.hero-grid>.project,.section.entering{animation:enter-section .48s ease-out both}
+  .hero-grid>.project{animation-delay:.08s}
+  .portfolio-image img,.button{transition:transform .22s ease}
+  @media(hover:hover){.portfolio-item:hover img{transform:scale(1.035)}.button:hover{transform:translateY(-2px)}}
+}
 </style>
 </head>
 <body>
-<header class="wrap top" id="inicio"><a class="brand" href="#inicio">Lobatech<b>.</b></a><nav aria-label="Menu principal"><a href="#servicos">Serviços</a><a href="#demonstracao">Exemplos</a><a href="#manutencao">Manutenção</a><a href="#contato">Contato</a></nav></header>
+<header class="wrap top" id="inicio"><a class="brand" href="#inicio">Lobatech<b>.</b></a><nav aria-label="Menu principal"><a href="#servicos">Serviços</a><a href="#portfolio">Portfólio</a><a href="#manutencao">Manutenção</a><a href="#contato">Contato</a></nav></header>
 <main>
 <section class="hero" aria-labelledby="titulo">
 <div class="wrap hero-grid">
 <div><span class="tag">Criação de sites em Joinville · SC</span><h1 class="title" id="titulo">Sites para receber pedidos e agendamentos <em>pelo WhatsApp.</em></h1><p class="intro">Sou Lucas Lobato. Crio sites para clínicas, restaurantes e prestadores de serviços. Seu cliente encontra o que precisa e fala direto com você.</p><div class="actions"><a class="button primary" href="https://wa.me/5547920002728?text=Ol%C3%A1%2C%20Lucas!%20Gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20o%20site%20do%20meu%20neg%C3%B3cio.">Pedir orçamento ↗</a><a class="button secondary" href="https://drafabioladonza.com.br/agendamento/">Ver site entregue ↗</a></div></div>
 <figure class="project"><a class="preview" href="https://drafabioladonza.com.br/agendamento/" aria-label="Visitar o site entregue para Fabíola Donza"><img src="assets/fabiola-donza.webp" width="390" height="744" alt="Página de agendamento da Fabíola Donza vista pelo celular"></a><figcaption><span class="tag">Projeto entregue</span><h2>Fabíola Donza</h2><p>Clínica de estética em Ananindeua · PA</p><a href="https://drafabioladonza.com.br/agendamento/">Ver página de agendamento ↗</a></figcaption></figure>
 </div>
+</section>
+<section class="wrap section" id="portfolio" aria-labelledby="portfolio-title">
+  <span class="tag">Portfólio</span>
+  <h2 class="heading" id="portfolio-title">Prévias de projetos</h2>
+  <div class="portfolio-grid">
+    <a class="portfolio-item" href="https://lobatex-luc.github.io/najlasousa/" aria-label="Abrir prévia do projeto Najla Sousa">
+      <div class="portfolio-image"><img loading="lazy" decoding="async" src="assets/najlasousa.webp" width="960" height="650" alt="Página inicial do projeto Najla Sousa"></div>
+      <div class="portfolio-info"><div><h3>Najla Sousa</h3><p>Estética facial</p></div><span aria-hidden="true">↗</span></div>
+    </a>
+    <a class="portfolio-item" href="https://lobatex-luc.github.io/RKEstetica/" aria-label="Abrir prévia do projeto RK Estética">
+      <div class="portfolio-image"><img loading="lazy" decoding="async" src="assets/RKEstetica.webp" width="960" height="650" alt="Página inicial do projeto RK Estética"></div>
+      <div class="portfolio-info"><div><h3>RK Estética</h3><p>Clínica de estética</p></div><span aria-hidden="true">↗</span></div>
+    </a>
+    <a class="portfolio-item" href="https://lobatex-luc.github.io/papillon-estetica-avancada/" aria-label="Abrir prévia do projeto Papillon">
+      <div class="portfolio-image"><img loading="lazy" decoding="async" src="assets/papillon-estetica-avancada.webp" width="960" height="650" alt="Página inicial do projeto Papillon"></div>
+      <div class="portfolio-info"><div><h3>Papillon</h3><p>Estética avançada</p></div><span aria-hidden="true">↗</span></div>
+    </a>
+  </div>
 </section>
 <section class="wrap section" id="servicos"><span class="tag">Serviços</span><h2 class="heading">O que podemos criar</h2><div class="cards">
 <article class="card"><h3>Site institucional</h3><p>Apresente seu negócio, organize seus serviços e deixe telefone, localização e horários fáceis de encontrar.</p><a class="button secondary" href="https://wa.me/5547920002728?text=Ol%C3%A1%2C%20Lucas!%20Gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20um%20site%20institucional." aria-label="Pedir orçamento pelo WhatsApp para um site institucional">Pedir orçamento ↗</a></article>
@@ -125,6 +159,17 @@ document.querySelector("#download").addEventListener("click", () => {
   link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
+if ("IntersectionObserver" in window && matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("entering");
+        observer.unobserve(entry.target);
+      }
+    }
+  });
+  document.querySelectorAll(".section").forEach(section => observer.observe(section));
+}
 </script>
 </body>
 </html>
