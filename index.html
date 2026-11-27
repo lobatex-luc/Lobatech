@@ -31,6 +31,14 @@ section{scroll-margin-top:24px}.section{padding:70px 0;border-top:1px solid var(
   .portfolio-image img,.button{transition:transform .22s ease}
   @media(hover:hover){.portfolio-item:hover img{transform:scale(1.035)}.button:hover{transform:translateY(-2px)}}
 }
+#sobre details{padding:0}
+#sobre summary{display:flex;align-items:center;gap:.8rem;padding:16px 2px;list-style:none}
+#sobre summary::-webkit-details-marker{display:none}
+#sobre summary::before{content:"";width:.45em;height:.45em;flex:none;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(-45deg)}
+#sobre summary:is(:hover,:focus-visible),#sobre details[open] summary{color:var(--lime)}
+#sobre details[open]:not(.closing) summary::before{transform:rotate(45deg)}
+#sobre details p{margin:0;padding:0 0 18px 1.5rem}
+@media(prefers-reduced-motion:no-preference){#sobre summary::before{transition:transform .28s ease}#sobre summary{transition:color .18s ease}}
 </style>
 </head>
 <body>
@@ -170,6 +178,39 @@ if ("IntersectionObserver" in window && matchMedia("(prefers-reduced-motion: no-
   });
   document.querySelectorAll(".section").forEach(section => observer.observe(section));
 }
+document.querySelectorAll("#sobre details").forEach(item => {
+  const summary = item.querySelector("summary");
+  let animation;
+  summary.addEventListener("click", event => {
+    if (!item.animate || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      animation?.cancel();
+      animation = null;
+      item.classList.remove("closing");
+      item.style.overflow = "";
+      return;
+    }
+    event.preventDefault();
+    const expand = !item.open || item.classList.contains("closing");
+    const start = item.getBoundingClientRect().height;
+    animation?.cancel();
+    item.open = true;
+    item.classList.toggle("closing", !expand);
+    item.style.overflow = "hidden";
+    const border = parseFloat(getComputedStyle(item).borderBottomWidth);
+    const end = expand ? item.getBoundingClientRect().height : summary.getBoundingClientRect().height + border;
+    const current = item.animate([{height: start + "px"}, {height: end + "px"}], {
+      duration: 320, easing: "ease-in-out"
+    });
+    animation = current;
+    current.onfinish = () => {
+      if (animation !== current) return;
+      item.open = expand;
+      item.classList.remove("closing");
+      item.style.overflow = "";
+      animation = null;
+    };
+  });
+});
 </script>
 </body>
 </html>
